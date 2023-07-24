@@ -6,13 +6,17 @@
 // import typescript from '@rollup/plugin-typescript'
 import typescript from 'rollup-plugin-typescript2';
 
-import banner from 'rollup-plugin-banner';
-import pkg from './package.json';
+import pkg from './package.json' assert { type: 'json' };
 
-/* eslint-disable import/no-default-export */
+// rollup-plugin-banner does not work anymore and the default banner will do since there are no
+// minified builds.
+const createBanner = (lines) => `/**\n${lines.map((l) => ` * ${l}\n`).join('')} */`;
 
-const copyright = `Copyright (c) 2022 ${pkg.author}`;
-const bannerText = `${pkg.name} v${pkg.version}\n${copyright}\nLicense: ${pkg.license}`;
+const banner = createBanner([
+  `${pkg.name} v${pkg.version}`,
+  `Copyright (c) 2022 ${pkg.author}`,
+  `License: ${pkg.license}`,
+]);
 
 const defaults = {
   input: 'src/index.ts',
@@ -29,10 +33,10 @@ export default [
     output: {
       file: pkg.main,
       format: 'cjs',
+      banner,
     },
     plugins: [
       typescript(),
-      banner(bannerText),
     ],
   },
 
@@ -42,6 +46,7 @@ export default [
     output: {
       file: pkg.module,
       format: 'es',
+      banner,
     },
     plugins: [
       typescript({
@@ -55,7 +60,6 @@ export default [
         },
         useTsconfigDeclarationDir: true,
       }),
-      banner(bannerText),
     ],
   },
 ];
