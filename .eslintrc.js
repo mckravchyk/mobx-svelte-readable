@@ -40,7 +40,7 @@ module.exports = {
 
     'prefer-destructuring': 'off',
 
-    'brace-style': ['error', 'stroustrup'],
+    'brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
 
     curly: ['error', 'all'],
 

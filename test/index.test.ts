@@ -1,7 +1,5 @@
 import { makeObservable, observable, runInAction } from 'mobx';
 
-/* eslint-disable brace-style */
-
 import { readableReaction } from '../src';
 
 describe('Readable reaction', () => {
