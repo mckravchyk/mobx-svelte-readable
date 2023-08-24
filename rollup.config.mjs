@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies, import/no-default-export */
+
 // Using rollup-plugin-typescript2 rather than the official one as there are problems
 // with generating type declarations
 // https://github.com/rollup/plugins/issues/105
