@@ -1,4 +1,4 @@
-import { makeObservable, observable, runInAction } from 'mobx';
+import { observable, runInAction } from 'mobx';
 
 import { readableReaction } from '../src';
 
@@ -34,35 +34,6 @@ describe('Readable reaction', () => {
     unsub();
 
     expect(result).toEqual([[]]);
-  });
-
-  it('transforms the observed value', () => {
-    const result: number[][] = [];
-
-    const testObject = {
-      arr: [4, 5, 2, 3],
-    };
-    makeObservable(testObject, { arr: observable });
-
-    const arrSortedR = readableReaction(
-      () => testObject.arr,
-      (arr) => [...arr].sort(),
-    );
-
-    const unsub = arrSortedR.subscribe((arr) => {
-      result.push(arr);
-    });
-
-    runInAction(() => { testObject.arr = [...testObject.arr, 1]; });
-    runInAction(() => { testObject.arr = [...testObject.arr, 9]; });
-
-    unsub();
-
-    expect(result).toEqual([
-      [2, 3, 4, 5],
-      [1, 2, 3, 4, 5],
-      [1, 2, 3, 4, 5, 9],
-    ]);
   });
 
   it('destroys the subscription', () => {

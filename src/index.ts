@@ -32,27 +32,15 @@ function subscribe<ObservedValue, OutputValue>(
  * Svelte components ($ syntax).
  *
  * @param expression MobX reaction expression.
- * @param transformer (optional) A function that transforms the observed value to the output value
- * of the readable. It's recommended to use it only for trivial shape transformations, anything else
- * should be its own piece of state that gets updated as a reaction to its dependency.
  */
 /* eslint-disable no-redeclare */
 export function readableReaction<ObservedValue>(
   expression: (r: IReactionPublic) => ObservedValue,
-): Readable<ObservedValue>;
-export function readableReaction<ObservedValue, OutputValue>(
-  expression: (r: IReactionPublic) => ObservedValue,
-  transformer: (newValue: ObservedValue) => OutputValue
-): Readable<OutputValue>;
-export function readableReaction<ObservedValue, OutputValue>(
-  expression: (r: IReactionPublic) => ObservedValue,
-  transformer?: (newValue: ObservedValue) => OutputValue,
-): Readable<OutputValue> {
+): Readable<ObservedValue> {
   return {
     subscribe: (callback) => subscribe(
       expression,
-      callback as ReadableCallback<ObservedValue | OutputValue>,
-      transformer,
+      callback as ReadableCallback<ObservedValue>,
     ),
   };
 }
