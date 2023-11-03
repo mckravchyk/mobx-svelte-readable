@@ -1,6 +1,6 @@
 import { observable, runInAction } from 'mobx';
 
-import { readableReaction } from '../src';
+import { readableReaction } from 'src';
 
 describe('Readable reaction', () => {
   it('observes an expression', () => {
