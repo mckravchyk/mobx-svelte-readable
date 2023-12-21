@@ -5,7 +5,6 @@
   "author": "Maciej Krawczyk",
   "homepage": "https://github.com/mckravchyk/mobx-svelte-readable",
   "license": "MIT",
-  "private": true,
   "main": "./dist/mobx-svelte-readable.common.js",
   "module": "./dist/mobx-svelte-readable.mjs",
   "exports": {
