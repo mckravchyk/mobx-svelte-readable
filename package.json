@@ -7,8 +7,20 @@
   "license": "MIT",
   "private": true,
   "main": "./dist/mobx-svelte-readable.common.js",
-  "module": "./dist/mobx-svelte-readable.esm.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/mobx-svelte-readable.mjs",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/index.d.mts",
+        "default": "./dist/mobx-svelte-readable.mjs"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/mobx-svelte-readable.common.js"
+      }
+    }
+  },
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "lint": "eslint src test",
     "check-types": "tsc --noemit",
@@ -42,6 +54,7 @@
     "jest": "^29.6.1",
     "mobx": "^6.6.1",
     "rollup": "^4.9.1",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.4.0",
     "typescript": "5.3"
