@@ -30,7 +30,10 @@
     "prepublish": "npm run check && npm run build"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "package.json",
+    "LICENSE",
+    "README.md"
   ],
   "keywords": [
     "mobx",
