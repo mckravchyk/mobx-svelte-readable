@@ -1,6 +1,6 @@
 {
   "name": "mobx-svelte-readable",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A very simple, yet complete, integration between Svelte and MobX that connects MobX reaction with Svelte's readable auto-subscription.",
   "author": "Maciej Krawczyk",
   "homepage": "https://github.com/mckravchyk/mobx-svelte-readable",
